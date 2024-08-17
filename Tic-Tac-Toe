@@ -1,0 +1,31 @@
+window = Tk()
+window.geometry("600x600")
+
+players = ['x', 'o']
+player = random.choice(players)
+spaces = 9
+
+title = Label(window,text="TIC-TAC-TOE", font=("small fonts", 50, "bold"), bg="black", fg="#00ff00")
+title.pack(side=TOP, fill=X)
+
+label = Label(window, text= f"{player}'s turn", font=("Algerian",30,"bold"))
+label.pack()
+
+restart = Button(window, text="restart", font=("small fonts", 30, "bold"), command=restart_btn)
+restart.pack()
+
+frame = Frame(window)
+frame.pack()
+
+button = [[0,0,0],
+          [0,0,0],
+          [0,0,0]]
+
+for row in range(3):
+    for column in range(3):
+        button[row][column] = Button(frame, width=6, height=3,command=lambda a=row,b=column : assign(a,b), font=('algerian',20,'bold'))
+        button[row][column].grid(row=row, column= column)
+    
+
+
+window.mainloop()
